@@ -32,80 +32,49 @@ import com.example.demo.service.AccountService;
 public class AccountController {
 	
 	@Autowired private AccountService accountservice;
-
+//Save the data - Account details in the database 
    
-	
-	
 	@PostMapping(value = "/create",produces = MediaType.APPLICATION_JSON_VALUE)
 		
-		
-	public ResponseEntity<?> saveOrder(@RequestBody Account account) throws Exception{
+public ResponseEntity<?> saveOrder(@RequestBody Account account) throws Exception{
 		
 		AccountResponse accountresponse = null;
 		accountresponse = accountservice.save(account);
-	return ResponseEntity.ok(accountresponse);
+	       return ResponseEntity.ok(accountresponse);
 		
-		
-		
-		
-		
-		
-	}
+}
 	
 	@GetMapping(value = "/getaccountdetails")
-	
-
-	public ResponseEntity<?> getaccountdetails() throws Exception {
+//Get all the data's from the database	
+public ResponseEntity<?> getaccountdetails() throws Exception {
 		
-			
-		
-		
-
-		//System.out.println("accdetails"+accdetails);
-		// TODO Auto-generated method stub
-		return ResponseEntity.ok(accountservice.getaccountdetails());
+	return ResponseEntity.ok(accountservice.getaccountdetails());
 	
 		
 	}
 	
   @GetMapping(value = "/getaccountusername/{id}")
-	
 
-	public ResponseEntity<?> getaccountusername(@PathVariable long id) throws Exception {
+//Get the data from the database based on the id	
+public ResponseEntity<?> getaccountusername(@PathVariable long id) throws Exception {
 	
 	
 		return ResponseEntity.ok(accountservice.getaccountusername(id));
 		
-			
-		
-		
-
-		//System.out.println("accdetails"+accdetails);
-		// TODO Auto-generated method stub
-		
-				
-				
-	
-		
-	}
+}
 
 @PostMapping(value = "/deposit",produces = MediaType.APPLICATION_JSON_VALUE)
 
-
+//Deposit amount in the balance table in the database
 public ResponseEntity<?> deposit(@RequestBody Balance balance) throws Exception{
 	
 return ResponseEntity.ok(accountservice.addbalance(balance));
 	
 	
-	
-	
-	
-	
 }
 
-
- @PostMapping(value = "/withdraw",produces = MediaType.APPLICATION_JSON_VALUE)
-  
+@PostMapping(value = "/withdraw",produces = MediaType.APPLICATION_JSON_VALUE)
+  //Withdraw amount in the balance table in the database 
   
   public ResponseEntity<?> withdraw(@RequestBody Balance balance) throws Exception{
   
@@ -113,6 +82,7 @@ return ResponseEntity.ok(accountservice.addbalance(balance));
  }
  
  @GetMapping(value = "/viewbalance/{accountid}")
+//Get the transaction details
  
  public ResponseEntity<?> viewbalance(@PathVariable long accountid) throws Exception{
 	  

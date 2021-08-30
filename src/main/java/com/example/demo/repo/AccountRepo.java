@@ -23,11 +23,4 @@ public interface AccountRepo extends JpaRepository<Account,Long> {
 	   ArrayList<Account> findbyid(long id);
 	
 	
-	
-
-
-	
-	
-	
-	
 }
